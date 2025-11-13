@@ -15,6 +15,7 @@
     .btn{display:inline-block;text-align:center;text-decoration:none;color:#fff;background:var(--blue);padding:10px 12px;border-radius:8px;font-weight:700}
     .route{font-weight:700;color:#222}
     .route small{display:block;font-weight:400;color:var(--muted);margin-top:6px}
+    .coords{font-size:0.95rem;color:var(--muted);margin-top:6px}
   </style>
 </head>
 <body>
@@ -36,13 +37,19 @@
       <div class="list-item">
         <div>
           <div style="font-weight:700">Pearly EOG</div>
-          <div style="font-size:0.95rem;color:var(--muted)">800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE</div>
+          <div class="coords">
+            <div><strong>Stops (in order)</strong></div>
+            <div>1. 40.3188065, -81.3114663</div>
+            <div>2. 40.2352866, -81.3448869</div>
+            <div>3. 40.256151, -81.326437</div>
+            <div>4. 40.2488590, -81.3654590</div>
+          </div>
         </div>
 
-        <!-- Directions URL built without origin: Maps will use the device's current location -->
+        <!-- Directions URL built without origin: device location will be used as origin -->
         <div>
           <a class="btn"
-             href="https://www.google.com/maps/dir/?api=1&destination=Laurel+Valley+Rd+SE&waypoints=800%7C258%7CSandy+Ridge+Rd+SE&travelmode=driving"
+             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869%7C40.256151,-81.326437&travelmode=driving"
              target="_blank" rel="noopener">
             Directions (from current location)
           </a>
