@@ -15,7 +15,7 @@
 <body>
   <h1>Quick Directions</h1>
 
-  <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=1600+Amphitheatre+Parkway,+Mountain+View,+CA" target="_blank" rel="noopener">
+  <a class="btn" href="https://maps.app.goo.gl/pFAuXL6FtsLLk5JL6?g_st=ac" target="_blank" rel="noopener">
     Directions to Google HQ
   </a>
 
