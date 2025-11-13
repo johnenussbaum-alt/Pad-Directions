@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Get Directions</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; padding: 2rem; max-width:720px; margin:0 auto; }
+    h1 { margin-bottom: 1rem; }
+    .btn {
+      display:block;
+      text-decoration:none;
+      color:#fff;
+      background:#1a73e8;
+      padding:12px 16px;
+      border-radius:8px;
+      margin:8px 0;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.12);
+    }
+    .btn:active { transform: translateY(1px); box-shadow:none; }
+    .muted { color:#666; font-size:0.9rem; margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <h1>Quick Directions</h1>
+
+  <!-- Example: destination as address or place name -->
+  <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=1600+Amphitheatre+Parkway,+Mountain+View,+CA" target="_blank" rel="noopener">
+    Directions to Google HQ
+  </a>
+
+  <!-- Example: destination as coordinates -->
+  <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=40.12345,-82.12345" target="_blank" rel="noopener">
+    Directions to 40.12345, -82.12345
+  </a>
+
+  <!-- Example: destination as place name (URL-encode spaces and punctuation) -->
+  <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Joe%27s+BBQ,+Leesville+OH" target="_blank" rel="noopener">
+    Directions to Joe's BBQ Leesville
+  </a>
+
+  <div class="muted">Tip: replace the destination values with your addresses or coordinates and add or remove buttons as needed.</div>
+</body>
+</html>
