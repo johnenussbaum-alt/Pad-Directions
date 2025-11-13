@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pearly EOG - Directions</title>
+  <title>Pearly - Directions</title>
   <style>
     body { font-family: system-ui, Arial, sans-serif; padding:2rem; max-width:720px; margin:0 auto; background:#f9fafb; color:#111; }
     h1 { margin-bottom:1rem; font-size:1.25rem; }
@@ -12,6 +12,7 @@
       background:#1a73e8; padding:14px 16px; border-radius:10px; margin:12px 0;
       box-shadow:0 3px 0 rgba(0,0,0,0.12); font-weight:600;
     }
+    .btn:active { transform:translateY(1px); box-shadow:none; }
     .note { color:#555; font-size:0.95rem; margin-top:8px; line-height:1.4; }
     .route { background:#fff; border:1px solid #e6e9ee; padding:10px 12px; border-radius:8px; margin-top:10px; font-weight:600; }
     .route small { display:block; font-weight:400; color:#666; margin-top:6px; }
@@ -20,18 +21,15 @@
 <body>
   <h1>Directions</h1>
 
-  <!-- Directions URL without origin: device location will be used as origin -->
-  <a class="btn"
-     href="https://www.google.com/maps/dir/?api=1&destination=Laurel+Valley+Rd+SE&waypoints=800%7C258%7CSandy+Ridge+Rd+SE&travelmode=driving"
-     target="_blank" rel="noopener">
-    Pearly EOG (Directions from current location)
+  <a class="btn" href="https://maps.app.goo.gl/kHkTydjEbAKzoXdk7?g_st=ac" target="_blank" rel="noopener">
+    Pearly (Directions from current location)
   </a>
 
   <div class="route">
     800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE
-    <small>Tap the button to open the route in Google Maps. On mobile the Maps app should show the Directions screen; press Start for step‑by‑step navigation.</small>
+    <small>Follow these turns in order; tap the button above to open the route in Google Maps for live navigation.</small>
   </div>
 
-  <div class="note">If you prefer exact pin placement, I can swap the plain text stops for precise coordinates (lat,lng) which makes routing more reliable. I can also encode a different final destination if you want.</div>
+  <div class="note">Tip: On mobile the Maps app will use your current location as the origin if the shared link does not fix a starting address.</div>
 </body>
 </html>
