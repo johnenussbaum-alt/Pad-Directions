@@ -13,16 +13,23 @@
       box-shadow:0 3px 0 rgba(0,0,0,0.12); font-weight:600;
     }
     .btn:active { transform:translateY(1px); box-shadow:none; }
+    .secondary { background:#555; }
     .note { color:#555; font-size:0.9rem; margin-top:8px; }
   </style>
 </head>
 <body>
   <h1>Directions</h1>
 
-  <a class="btn" href="https://maps.app.goo.gl/pLezgxTeQJByLz926?g_st=ac" target="_blank" rel="noopener">
-    Pearly EOG
+  <!-- Directions link that uses current device location as origin -->
+  <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Pearly+EOG+Leesville+OH&travelmode=driving" target="_blank" rel="noopener">
+    Pearly EOG (Directions from current location)
   </a>
 
-  <div class="note">Click the button to open Google Maps. On mobile it should open the Maps app.</div>
+  <!-- Original short link (opens place) -->
+  <a class="btn secondary" href="https://maps.app.goo.gl/pLezgxTeQJByLz926?g_st=ac" target="_blank" rel="noopener">
+    Pearly EOG (Open place)
+  </a>
+
+  <div class="note">Tip: On mobile the first button should open the Maps app directly into the directions screen, using your current location as the start. If you want me to lock the destination to exact coordinates I can update the link with lat,lng for precision.</div>
 </body>
 </html>
