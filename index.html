@@ -3,33 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pearly EOG - Directions</title>
+  <title>Pearly EOG - Categories</title>
   <style>
-    body { font-family: system-ui, Arial, sans-serif; padding:2rem; max-width:720px; margin:0 auto; background:#f9fafb; color:#111; }
-    h1 { margin-bottom:1rem; font-size:1.25rem; }
-    .btn {
-      display:block; width:100%; text-align:center; text-decoration:none; color:#fff;
-      background:#1a73e8; padding:14px 16px; border-radius:10px; margin:12px 0;
-      box-shadow:0 3px 0 rgba(0,0,0,0.12); font-weight:600;
+    :root{--blue:#1a73e8;--muted:#555;--card:#fff;--bg:#f9fafb}
+    body{font-family:system-ui,Arial,sans-serif;padding:2rem;max-width:720px;margin:0 auto;background:var(--bg);color:#111}
+    h1{font-size:1.25rem;margin:0 0 1rem}
+    .row{display:flex;gap:12px;align-items:center}
+    .category {
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 16px;border-radius:10px;background:#fff;border:1px solid #e6e9ee;
+      cursor:pointer;font-weight:700;box-shadow:0 2px 0 rgba(0,0,0,0.06)
     }
-    .btn:active { transform:translateY(1px); box-shadow:none; }
-    .note { color:#555; font-size:0.95rem; margin-top:8px; line-height:1.4; }
-    .route { background:#fff; border:1px solid #e6e9ee; padding:10px 12px; border-radius:8px; margin-top:10px; font-weight:600; }
-    .route small { display:block; font-weight:400; color:#666; margin-top:6px; }
+    .category:hover{transform:translateY(-1px)}
+    .btn {
+      display:block;width:100%;text-align:center;text-decoration:none;color:#fff;
+      background:var(--blue);padding:12px 14px;border-radius:10px;margin:12px 0;
+      box-shadow:0 3px 0 rgba(0,0,0,0.12);font-weight:600
+    }
+    .card{background:var(--card);border:1px solid #e6e9ee;padding:12px;border-radius:10px;margin-top:12px}
+    .route{font-weight:700;color:#222}
+    .route small{display:block;font-weight:400;color:var(--muted);margin-top:6px}
+    .list{margin-top:12px;display:grid;gap:8px}
+    .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
+    .toggle {background:transparent;border:0;color:var(--blue);font-weight:700;cursor:pointer}
+    .crumbs{font-size:0.9rem;color:var(--muted);margin-top:8px}
+    @media (prefers-reduced-motion:no-preference){.category:hover,.btn:active{transition:transform .12s ease}}
   </style>
 </head>
 <body>
   <h1>Directions</h1>
 
-  <a class="btn" href="https://maps.app.goo.gl/kHkTydjEbAKzoXdk7?g_st=ac" target="_blank" rel="noopener">
-    Pearly EOG (Directions from current location)
-  </a>
-
-  <div class="route">
-    800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE
-    <small>Follow these turns in order; tap the button above to open the route in Google Maps for live navigation.</small>
+  <div class="row">
+    <div id="cat-eog" class="category" role="button" aria-expanded="false" tabindex="0">
+      EOG
+    </div>
   </div>
 
-  <div class="note">Tip: On mobile the Maps app will use your current location as the origin if the shared link does not fix a starting address.</div>
+  <div id="category-panel" class="card" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>EOG</strong>
+      <button id="collapse" class="toggle" aria-label="Collapse list">Close</button>
+    </div>
+
+    <div class="crumbs">Category › EOG</div>
+
+    <div id="list" class="list">
+      <!-- Pearly item -->
+      <div class="list-item">
+        <div>
+          <div style="font-weight:700">Pearly EOG</div>
+          <div style="font-size:0.95rem;color:var(--muted)">800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE</div>
+        </div>
+        <div style="min-width:180px;margin-left:12px">
+          <a class="btn" href="https://maps.app.goo.gl/kHkTydjEbAKzoXdk7?g_st=ac" target="_blank" rel="noopener">
+            Directions (from current location)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const catBtn = document.getElementById('cat-eog');
+    const panel = document.getElementById('category-panel');
+    const collapse = document.getElementById('collapse');
+
+    function openPanel(){
+      panel.hidden = false;
+      catBtn.setAttribute('aria-expanded', 'true');
+      panel.querySelector('.btn')?.focus();
+    }
+    function closePanel(){
+      panel.hidden = true;
+      catBtn.setAttribute('aria-expanded', 'false');
+      catBtn.focus();
+    }
+
+    catBtn.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
+    catBtn.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.hidden ? openPanel() : closePanel(); }});
+    collapse.addEventListener('click', closePanel);
+  </script>
 </body>
 </html>
