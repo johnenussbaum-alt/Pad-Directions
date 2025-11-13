@@ -3,33 +3,65 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pearly - Directions</title>
+  <title>Categories · Directions</title>
   <style>
-    body { font-family: system-ui, Arial, sans-serif; padding:2rem; max-width:720px; margin:0 auto; background:#f9fafb; color:#111; }
-    h1 { margin-bottom:1rem; font-size:1.25rem; }
-    .btn {
-      display:block; width:100%; text-align:center; text-decoration:none; color:#fff;
-      background:#1a73e8; padding:14px 16px; border-radius:10px; margin:12px 0;
-      box-shadow:0 3px 0 rgba(0,0,0,0.12); font-weight:600;
-    }
-    .btn:active { transform:translateY(1px); box-shadow:none; }
-    .note { color:#555; font-size:0.95rem; margin-top:8px; line-height:1.4; }
-    .route { background:#fff; border:1px solid #e6e9ee; padding:10px 12px; border-radius:8px; margin-top:10px; font-weight:600; }
-    .route small { display:block; font-weight:400; color:#666; margin-top:6px; }
+    :root{--blue:#1a73e8;--muted:#555;--card:#fff;--bg:#f9fafb}
+    body{font-family:system-ui,Arial,sans-serif;padding:2rem;max-width:720px;margin:0 auto;background:var(--bg);color:#111}
+    h1{font-size:1.25rem;margin:0 0 1rem}
+    .category{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;background:#fff;border:1px solid #e6e9ee;cursor:pointer;font-weight:700}
+    .card{background:var(--card);border:1px solid #e6e9ee;padding:12px;border-radius:10px;margin-top:12px}
+    .list{margin-top:12px;display:grid;gap:8px}
+    .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
+    .btn{display:inline-block;text-align:center;text-decoration:none;color:#fff;background:var(--blue);padding:10px 12px;border-radius:8px;font-weight:700}
+    .route{font-weight:700;color:#222}
+    .route small{display:block;font-weight:400;color:var(--muted);margin-top:6px}
   </style>
 </head>
 <body>
-  <h1>Directions</h1>
+  <h1>Categories</h1>
 
-  <a class="btn" href="https://maps.app.goo.gl/jYXStRPHb38jUyGm7?g_st=ac" target="_blank" rel="noopener">
-    Pearly (Directions from current location)
-  </a>
-
-  <div class="route">
-    800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE
-    <small>Follow these turns in order; tap the button above to open the route in Google Maps for live navigation.</small>
+  <div>
+    <div id="cat-eog" class="category" role="button" aria-expanded="false" tabindex="0">
+      EOG
+    </div>
   </div>
 
-  <div class="note">Tip: On mobile the Maps app will use your current location as the origin if the shared link does not fix a starting address.</div>
+  <div id="category-panel" class="card" hidden>
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>EOG</strong>
+      <button id="close" style="background:transparent;border:0;color:var(--blue);font-weight:700;cursor:pointer">Close</button>
+    </div>
+
+    <div class="list" id="list">
+      <div class="list-item">
+        <div>
+          <div style="font-weight:700">Pearly EOG</div>
+          <div style="font-size:0.95rem;color:var(--muted)">800 / 258 / Sandy Ridge Rd SE / Laurel Valley Rd SE</div>
+        </div>
+
+        <!-- Directions URL built without origin: Maps will use the device's current location -->
+        <div>
+          <a class="btn"
+             href="https://www.google.com/maps/dir/?api=1&destination=Laurel+Valley+Rd+SE&waypoints=800%7C258%7CSandy+Ridge+Rd+SE&travelmode=driving"
+             target="_blank" rel="noopener">
+            Directions (from current location)
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cat = document.getElementById('cat-eog');
+    const panel = document.getElementById('category-panel');
+    const close = document.getElementById('close');
+
+    function openPanel(){ panel.hidden = false; cat.setAttribute('aria-expanded','true'); panel.querySelector('.btn')?.focus(); }
+    function closePanel(){ panel.hidden = true; cat.setAttribute('aria-expanded','false'); cat.focus(); }
+
+    cat.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
+    cat.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.hidden ? openPanel() : closePanel(); }});
+    close.addEventListener('click', closePanel);
+  </script>
 </body>
 </html>
