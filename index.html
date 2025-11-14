@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Categories · Directions</title>
   <style>
-    :root{--blue:#1a73e8;--muted:#555;--card:#fff;--bg:#f9fafb}
+    :root{--blue:#1a73e8;--muted:#555;--bg:#f9fafb}
     body{font-family:system-ui,Arial,sans-serif;padding:2rem;max-width:720px;margin:0 auto;background:var(--bg);color:#111}
     h1{font-size:1.25rem;margin:0 0 1rem}
     .category{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;background:#fff;border:1px solid #e6e9ee;cursor:pointer;font-weight:700}
-    .card{background:var(--card);border:1px solid #e6e9ee;padding:12px;border-radius:10px;margin-top:12px}
+    .card{background:#fff;border:1px solid #e6e9ee;padding:12px;border-radius:10px;margin-top:12px}
     .list{margin-top:12px;display:grid;gap:8px}
     .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
     .btn{display:inline-block;text-align:center;text-decoration:none;color:#fff;background:var(--blue);padding:10px 12px;border-radius:8px;font-weight:700}
-    .route{font-weight:700;color:#222}
-    .route small{display:block;font-weight:400;color:var(--muted);margin-top:6px}
     .coords{font-size:0.95rem;color:var(--muted);margin-top:6px}
   </style>
 </head>
@@ -22,9 +20,7 @@
   <h1>Categories</h1>
 
   <div>
-    <div id="cat-eog" class="category" role="button" aria-expanded="false" tabindex="0">
-      EOG
-    </div>
+    <div id="cat-eog" class="category" role="button" aria-expanded="false" tabindex="0">EOG</div>
   </div>
 
   <div id="category-panel" class="card" hidden>
@@ -46,10 +42,10 @@
           </div>
         </div>
 
-        <!-- Directions URL built without origin: device location will be used as origin -->
+        <!-- Path-style coordinates URL; empty origin forces device current location -->
         <div>
           <a class="btn"
-             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869%7C40.256151,-81.326437&travelmode=driving"
+             href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.256151,-81.326437/40.2488590,-81.3654590"
              target="_blank" rel="noopener">
             Directions (from current location)
           </a>
@@ -62,10 +58,8 @@
     const cat = document.getElementById('cat-eog');
     const panel = document.getElementById('category-panel');
     const close = document.getElementById('close');
-
-    function openPanel(){ panel.hidden = false; cat.setAttribute('aria-expanded','true'); panel.querySelector('.btn')?.focus(); }
-    function closePanel(){ panel.hidden = true; cat.setAttribute('aria-expanded','false'); cat.focus(); }
-
+    function openPanel(){ panel.hidden=false; cat.setAttribute('aria-expanded','true'); panel.querySelector('.btn')?.focus(); }
+    function closePanel(){ panel.hidden=true; cat.setAttribute('aria-expanded','false'); cat.focus(); }
     cat.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
     cat.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.hidden ? openPanel() : closePanel(); }});
     close.addEventListener('click', closePanel);
