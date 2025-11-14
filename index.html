@@ -11,10 +11,11 @@
     .category{display:inline-flex;align-items:center;justify-content:center;padding:12px 16px;border-radius:10px;background:#fff;border:1px solid #e6e9ee;cursor:pointer;font-weight:700}
     .card{background:#fff;border:1px solid #e6e9ee;padding:12px;border-radius:10px;margin-top:12px}
     .list{margin-top:12px;display:grid;gap:8px}
-    .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
+    .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:12px}
     .btn{display:inline-block;text-align:center;text-decoration:none;color:#fff;background:var(--blue);padding:10px 12px;border-radius:8px;font-weight:700}
-    .coords{font-size:0.95rem;color:var(--muted);margin-top:6px}
+    .label{font-weight:700}
     .note{color:var(--muted);font-size:0.9rem;margin-top:10px}
+    @media (max-width:480px){ .list-item{flex-direction:column;align-items:stretch} .btn{width:100%} }
   </style>
 </head>
 <body>
@@ -32,36 +33,20 @@
 
     <div class="list" id="list">
       <div class="list-item">
-        <div>
-          <div style="font-weight:700">Pearley</div>
-          <div class="coords">
-            <div><strong>Stops (in order)</strong></div>
-            <div>1. 40.3188065, -81.3114663</div>
-            <div>2. 40.2352866, -81.3448869</div>
-            <div>3. 40.2488590, -81.3654590</div>
-          </div>
-        </div>
+        <div class="label">Pearley</div>
 
-        <div style="min-width:220px;margin-left:12px">
-          <!-- Path-style URL with empty origin (device current location) and three stops -->
+        <!-- Path-style coordinates URL; origin left empty so device uses current location -->
+        <div>
           <a class="btn"
              href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.2488590,-81.3654590?travelmode=driving&dir_action=navigate"
              target="_blank" rel="noopener">
-            Directions (from current location)
-          </a>
-
-          <!-- Backup: API-style with explicit waypoints (three stops) -->
-          <a class="btn" style="background:#2d6df6;margin-top:8px;display:block;text-align:center"
-             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869&travelmode=driving"
-             target="_blank" rel="noopener">
-            Backup Directions link
+            Directions (from here)
           </a>
         </div>
       </div>
     </div>
 
-    <div class="note">
-    </div>
+    <div class="note">Tap Directions to open Google Maps. The Maps app should use your device location as the start and show the route with the listed stops in order.</div>
   </div>
 
   <script>
