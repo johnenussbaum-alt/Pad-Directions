@@ -14,6 +14,7 @@
     .list-item{background:#fff;border:1px solid #e6e9ee;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between}
     .btn{display:inline-block;text-align:center;text-decoration:none;color:#fff;background:var(--blue);padding:10px 12px;border-radius:8px;font-weight:700}
     .coords{font-size:0.95rem;color:var(--muted);margin-top:6px}
+    .note{color:var(--muted);font-size:0.9rem;margin-top:10px}
   </style>
 </head>
 <body>
@@ -42,15 +43,27 @@
           </div>
         </div>
 
-        <!-- Path-style coordinates URL; empty origin forces device current location -->
-        <div>
+        <div style="min-width:220px;margin-left:12px">
+          <!-- Primary: path-style URL, empty origin (//) -> device current location -->
           <a class="btn"
-             href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.256151,-81.326437/40.2488590,-81.3654590"
+             href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.256151,-81.326437/40.2488590,-81.3654590?travelmode=driving&dir_action=navigate"
              target="_blank" rel="noopener">
             Directions (from current location)
           </a>
+
+          <!-- Backup: API-style with explicit waypoints (some devices prefer this) -->
+          <a class="btn" style="background:#2d6df6;margin-top:8px;display:block;text-align:center"
+             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869%7C40.256151,-81.326437&travelmode=driving"
+             target="_blank" rel="noopener">
+            Backup Directions link
+          </a>
         </div>
       </div>
+    </div>
+
+    <div class="note">
+      Test on mobile: open this page in your phone browser and tap "Directions (from current location)".  
+      If Maps still shows a wrong route or omits stops, open the Backup Directions link. If both fail on a given device, tell me which phone/browser (Android version) and I’ll produce an alternate ordering or small tweak.
     </div>
   </div>
 
