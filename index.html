@@ -22,23 +22,34 @@
   <h1>Categories</h1>
 
   <div>
-    <div id="cat-eog" class="category" role="button" aria-expanded="false" tabindex="0">EOG</div>
+    <div id="cat-eog" class="category" role="button" aria-expanded="false" aria-controls="category-panel" tabindex="0">EOG</div>
   </div>
 
-  <div id="category-panel" class="card" hidden>
+  <div id="category-panel" class="card" hidden aria-hidden="true">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <strong>EOG</strong>
       <button id="close" style="background:transparent;border:0;color:var(--blue);font-weight:700;cursor:pointer">Close</button>
     </div>
 
     <div class="list" id="list">
+      <!-- Pearley item -->
       <div class="list-item">
         <div class="label">Pearley CB13 OH258/Sandy Ridge Rd SE/Laurel Valley Rd SE</div>
-
-        <!-- Path-style coordinates URL; origin left empty so device uses current location -->
         <div>
           <a class="btn"
              href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.2488590,-81.3654590?travelmode=driving&dir_action=navigate"
+             target="_blank" rel="noopener">
+            Directions (from here)
+          </a>
+        </div>
+      </div>
+
+      <!-- Akers item (converted to path-style coordinates) -->
+      <div class="list-item">
+        <div class="label">Akers CB13 Deersville Rd/Deersville Ridge Rd/Main St/Adams Rd</div>
+        <div>
+          <a class="btn"
+             href="https://www.google.com/maps/dir//40.2908572,-80.9957600/40.3168386,-81.1244242/40.3097281,-81.1972320?travelmode=driving&dir_action=navigate"
              target="_blank" rel="noopener">
             Directions (from here)
           </a>
@@ -53,10 +64,22 @@
     const cat = document.getElementById('cat-eog');
     const panel = document.getElementById('category-panel');
     const close = document.getElementById('close');
-    function openPanel(){ panel.hidden=false; cat.setAttribute('aria-expanded','true'); panel.querySelector('.btn')?.focus(); }
-    function closePanel(){ panel.hidden=true; cat.setAttribute('aria-expanded','false'); cat.focus(); }
+
+    function openPanel(){
+      panel.hidden = false;
+      panel.setAttribute('aria-hidden', 'false');
+      cat.setAttribute('aria-expanded', 'true');
+      panel.querySelector('.btn')?.focus();
+    }
+    function closePanel(){
+      panel.hidden = true;
+      panel.setAttribute('aria-hidden', 'true');
+      cat.setAttribute('aria-expanded', 'false');
+      cat.focus();
+    }
+
     cat.addEventListener('click', () => panel.hidden ? openPanel() : closePanel());
-    cat.addEventListener('keydown', (e) => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.hidden ? openPanel() : closePanel(); }});
+    cat.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); panel.hidden ? openPanel() : closePanel(); }});
     close.addEventListener('click', closePanel);
   </script>
 </body>
