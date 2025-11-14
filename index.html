@@ -38,22 +38,21 @@
             <div><strong>Stops (in order)</strong></div>
             <div>1. 40.3188065, -81.3114663</div>
             <div>2. 40.2352866, -81.3448869</div>
-            <div>3. 40.256151, -81.326437</div>
-            <div>4. 40.2488590, -81.3654590</div>
+            <div>3. 40.2488590, -81.3654590</div>
           </div>
         </div>
 
         <div style="min-width:220px;margin-left:12px">
-          <!-- Primary: path-style URL, empty origin (//) -> device current location -->
+          <!-- Path-style URL with empty origin (device current location) and three stops -->
           <a class="btn"
-             href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.256151,-81.326437/40.2488590,-81.3654590?travelmode=driving&dir_action=navigate"
+             href="https://www.google.com/maps/dir//40.3188065,-81.3114663/40.2352866,-81.3448869/40.2488590,-81.3654590?travelmode=driving&dir_action=navigate"
              target="_blank" rel="noopener">
             Directions (from current location)
           </a>
 
-          <!-- Backup: API-style with explicit waypoints (some devices prefer this) -->
+          <!-- Backup: API-style with explicit waypoints (three stops) -->
           <a class="btn" style="background:#2d6df6;margin-top:8px;display:block;text-align:center"
-             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869%7C40.256151,-81.326437&travelmode=driving"
+             href="https://www.google.com/maps/dir/?api=1&destination=40.2488590,-81.3654590&waypoints=40.3188065,-81.3114663%7C40.2352866,-81.3448869&travelmode=driving"
              target="_blank" rel="noopener">
             Backup Directions link
           </a>
@@ -62,8 +61,7 @@
     </div>
 
     <div class="note">
-      Test on mobile: open this page in your phone browser and tap "Directions (from current location)".  
-      If Maps still shows a wrong route or omits stops, open the Backup Directions link. If both fail on a given device, tell me which phone/browser (Android version) and I’ll produce an alternate ordering or small tweak.
+      I removed the third coordinate you specified earlier. Test the Primary link on your phone — it should open the Directions view with the three stops above and use the device’s location as the origin. Tell me if you want the displayed stops reordered, relabeled, or shortened to addresses.
     </div>
   </div>
 
